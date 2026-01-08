@@ -1,30 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>DEBUG</title>
+  <title>Stutter Vote</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body style="background:black;color:white;font-size:30px">
 
-  <div id="debug">LOADING...</div>
+<body class="vote-body">
+
+  <div class="vote-container">
+    <h1 id="title"></h1>
+    <p class="subtitle">בחר למי להצביע</p>
+
+    <div id="list" class="vote-list"></div>
+  </div>
 
   <script>
-    document.getElementById("debug").innerText = "JS LOADED ✅";
+    const categories = {
+      daily: {
+        title: "🤐 הגמגום של היום",
+        nominees: ["Barak", "Yossi", "Dani"]
+      },
+      monthly: {
+        title: "📅 הגמגום של החודש",
+        nominees: ["Barak", "Yossi", "Dani", "Avi"]
+      },
+      yearly: {
+        title: "🏆 הגמגום של השנה",
+        nominees: ["Barak", "Yossi", "Dani", "Avi", "Noam"]
+      }
+    };
 
     const params = new URLSearchParams(window.location.search);
-    const category = params.get("category");
+    const key = params.get("category");
 
-    document.body.innerHTML += "<p>Category: " + category + "</p>";
+    const data = categories[key];
 
-    const people = ["Barak", "Yossi", "Dani"];
+    document.getElementById("title").innerText = data.title;
 
-    people.forEach(p => {
-      const b = document.createElement("button");
-      b.innerText = p;
-      b.style.display = "block";
-      b.style.fontSize = "30px";
-      b.onclick = () => alert("VOTED " + p);
-      document.body.appendChild(b);
+    const list = document.getElementById("list");
+
+    data.nominees.forEach(name => {
+      const card = document.createElement("div");
+      card.className = "vote-card";
+      card.innerText = name;
+      card.onclick = () => alert("הצבעת ל: " + name);
+      list.appendChild(card);
     });
   </script>
 
