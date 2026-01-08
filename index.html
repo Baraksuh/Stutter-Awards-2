@@ -3,40 +3,113 @@
 <head>
   <meta charset="UTF-8">
   <title>Stutter Awards</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #2a2a2a, #0b0b0b);
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 20px 30px;
+      font-weight: 900;
+      font-size: 22px;
+      background: #141414;
+    }
+
+    .container {
+      min-height: calc(100vh - 70px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #aaa;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .card {
+      background: #1c1f26;
+      border-radius: 16px;
+      padding: 25px;
+      cursor: pointer;
+      transition: 0.25s;
+      font-weight: 800;
+      font-size: 20px;
+    }
+
+    .card span {
+      display: block;
+      margin-top: 10px;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .card:hover {
+      background: #ffd700;
+      color: black;
+      transform: translateY(-6px);
+    }
+  </style>
 </head>
+
 <body>
 
-<header class="navbar">
-  <div class="logo">🏆 Stutter Awards</div>
-  <div class="user">Barak</div>
-</header>
+  <header>🏆 Stutter Awards</header>
 
-<section class="hero">
-  <h1>בחרו קטגוריה להצבעה</h1>
-  <p>הצביעו פעם אחת בכל קטגוריה</p>
-</section>
+  <div class="container">
+    <h1>בחרו קטגוריה להצבעה</h1>
+    <div class="subtitle">הצביעו פעם אחת בכל קטגוריה</div>
 
-<section class="cards">
-  <div class="card" onclick="goVote('daily')">
-    <h3>🤐 הגמגום של היום</h3>
-    <span>3 מועמדים</span>
-    <button>להצביע ←</button>
+    <div class="cards">
+      <div class="card" onclick="goVote('daily')">
+        🤐 הגמגום של היום
+        <span>3 מועמדים</span>
+      </div>
+
+      <div class="card" onclick="goVote('monthly')">
+        📅 הגמגום של החודש
+        <span>4 מועמדים</span>
+      </div>
+
+      <div class="card" onclick="goVote('yearly')">
+        🏆 הגמגום של השנה
+        <span>6 מועמדים</span>
+      </div>
+    </div>
   </div>
 
-  <div class="card" onclick="goVote('monthly')">
-    <h3>📅 הגמגום של החודש</h3>
-    <span>4 מועמדים</span>
-    <button>להצביע ←</button>
-  </div>
+  <script>
+    function goVote(type) {
+      window.location.href = `vote.html?category=${type}`;
+    }
+  </script>
 
-  <div class="card" onclick="goVote('yearly')">
-    <h3>🏆 הגמגום של השנה</h3>
-    <span>6 מועמדים</span>
-    <button>להצביע ←</button>
-  </div>
-</section>
-
-<script src="script.js"></script>
 </body>
 </html>
