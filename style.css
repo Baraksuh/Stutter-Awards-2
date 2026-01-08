@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -5,10 +9,12 @@ body {
   color: white;
 }
 
+/* perfect center */
 .vote-body {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  padding-top: 60px;
+  align-items: center;
 }
 
 .vote-container {
@@ -17,27 +23,37 @@ body {
   text-align: center;
 }
 
+/* THICK text */
 h1 {
-  margin-bottom: 5px;
+  font-weight: 900;
+  font-size: 34px;
+  letter-spacing: 0.5px;
 }
 
 .subtitle {
+  font-weight: 700;
   color: #aaa;
   margin-bottom: 30px;
 }
 
+/* list */
 .vote-list {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
+/* card */
 .vote-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
   background: #1c1f26;
   padding: 18px;
   border-radius: 14px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: 800;
   transition: 0.25s;
 }
 
@@ -45,4 +61,13 @@ h1 {
   background: #ffd700;
   color: black;
   transform: translateY(-4px);
+}
+
+/* avatar */
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffd700;
 }
