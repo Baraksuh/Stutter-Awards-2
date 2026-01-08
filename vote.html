@@ -2,51 +2,53 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>Vote</title>
+  <title>Stutter Vote</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+
+<body style="background:#0f0f0f;color:white;font-family:Arial;text-align:center">
+
   <h1 id="title"></h1>
+  <p id="subtitle"></p>
+
   <div id="list" class="vote-list"></div>
 
-  <h1>🗳️ דף הצבעה</h1>
-  <p id="category"></p>
+  <script>
+    const categories = {
+      daily: {
+        title: "🤐 הגמגום של היום",
+        nominees: ["Barak", "Yossi", "Dani"]
+      },
+      monthly: {
+        title: "📅 הגמגום של החודש",
+        nominees: ["Barak", "Yossi", "Dani", "Avi"]
+      },
+      yearly: {
+        title: "🏆 הגמגום של השנה",
+        nominees: ["Barak", "Yossi", "Dani", "Avi", "Noam"]
+      }
+    };
 
-<script>
-  const categories = {
-    daily: {
-      title: "🤐 הגמגום של היום",
-      nominees: ["Barak", "Yossi", "Dani"]
-    },
-    monthly: {
-      title: "📅 הגמגום של החודש",
-      nominees: ["Barak", "Yossi", "Dani", "Avi"]
-    },
-    yearly: {
-      title: "🏆 הגמגום של השנה",
-      nominees: ["Barak", "Yossi", "Dani", "Avi", "Noam"]
+    const params = new URLSearchParams(window.location.search);
+    const key = params.get("category");
+
+    if (!categories[key]) {
+      document.getElementById("title").innerText = "❌ קטגוריה לא נמצאה";
+      throw new Error("Invalid category");
     }
-  };
 
-  const params = new URLSearchParams(window.location.search);
-  const key = params.get("category");
+    document.getElementById("title").innerText = categories[key].title;
+    document.getElementById("subtitle").innerText = "בחר למי להצביע";
 
-  const category = categories[key];
+    const list = document.getElementById("list");
 
-  document.getElementById("title").innerText = category.title;
-
-  const list = document.getElementById("list");
-  category.nominees.forEach(name => {
-    const btn = document.createElement("button");
-    btn.innerText = name;
-    btn.onclick = () => vote(name);
-    list.appendChild(btn);
-  });
-
-  function vote(name) {
-    alert("הצבעת ל: " + name);
-  }
-</script>
-
+    categories[key].nominees.forEach(name => {
+      const btn = document.createElement("button");
+      btn.innerText = name;
+      btn.onclick = () => alert("הצבעת ל: " + name);
+      list.appendChild(btn);
+    });
+  </script>
 
 </body>
 </html>
