@@ -17,19 +17,31 @@
 
   <script>
     const categories = {
-      daily: {
-        title: "🤐 הגמגום של היום",
-        nominees: ["Barak", "Yossi", "Dani"]
-      },
-      monthly: {
-        title: "📅 הגמגום של החודש",
-        nominees: ["Barak", "Yossi", "Dani", "Avi"]
-      },
-      yearly: {
-        title: "🏆 הגמגום של השנה",
-        nominees: ["Barak", "Yossi", "Dani", "Avi", "Noam"]
-      }
-    };
+const categories = {
+  daily: {
+    title: "🤐 הגמגום של היום",
+    nominees: [
+      { name: "Barak", img: "https://i.pravatar.cc/100?img=1" },
+      { name: "Yossi", img: "https://i.pravatar.cc/100?img=2" },
+      { name: "Dani", img: "https://i.pravatar.cc/100?img=3" }
+    ]
+  },
+  monthly: {
+    title: "📅 הגמגום של החודש",
+    nominees: [
+      { name: "Barak", img: "https://i.pravatar.cc/100?img=1" },
+      { name: "Yossi", img: "https://i.pravatar.cc/100?img=2" }
+    ]
+  },
+  yearly: {
+    title: "🏆 הגמגום של השנה",
+    nominees: [
+      { name: "Barak", img: "https://i.pravatar.cc/100?img=1" },
+      { name: "Yossi", img: "https://i.pravatar.cc/100?img=2" },
+      { name: "Dani", img: "https://i.pravatar.cc/100?img=3" }
+    ]
+  }
+};
 
     const params = new URLSearchParams(window.location.search);
     const key = params.get("category");
@@ -40,13 +52,20 @@
 
     const list = document.getElementById("list");
 
-    data.nominees.forEach(name => {
-      const card = document.createElement("div");
-      card.className = "vote-card";
-      card.innerText = name;
-      card.onclick = () => alert("הצבעת ל: " + name);
-      list.appendChild(card);
-    });
+data.nominees.forEach(person => {
+  const card = document.createElement("div");
+  card.className = "vote-card";
+
+  card.innerHTML = `
+    <img src="${person.img}" class="avatar">
+    <span>${person.name}</span>
+  `;
+
+  card.onclick = () => alert("הצבעת ל: " + person.name);
+  list.appendChild(card);
+});
+
+    
   </script>
 
 </body>
