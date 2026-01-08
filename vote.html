@@ -17,57 +17,54 @@
 
   <script>
     const categories = {
-const categories = {
-  daily: {
-    title: "🤐 הגמגום של היום",
-    nominees: [
-      { name: "Barak", img: "https://i.pravatar.cc/100?img=1" },
-      { name: "Yossi", img: "https://i.pravatar.cc/100?img=2" },
-      { name: "Dani", img: "https://i.pravatar.cc/100?img=3" }
-    ]
-  },
-  monthly: {
-    title: "📅 הגמגום של החודש",
-    nominees: [
-      { name: "Barak", img: "https://i.pravatar.cc/100?img=1" },
-      { name: "Yossi", img: "https://i.pravatar.cc/100?img=2" }
-    ]
-  },
-  yearly: {
-    title: "🏆 הגמגום של השנה",
-    nominees: [
-      { name: "Barak", img: "https://i.pravatar.cc/100?img=1" },
-      { name: "Yossi", img: "https://i.pravatar.cc/100?img=2" },
-      { name: "Dani", img: "https://i.pravatar.cc/100?img=3" }
-    ]
-  }
-};
+      daily: {
+        title: "🤐 הגמגום של היום",
+        nominees: [
+          { name: "Barak", img: "https://i.pravatar.cc/100?img=1" },
+          { name: "Yossi", img: "https://i.pravatar.cc/100?img=2" },
+          { name: "Dani", img: "https://i.pravatar.cc/100?img=3" }
+        ]
+      },
+      monthly: {
+        title: "📅 הגמגום של החודש",
+        nominees: [
+          { name: "Barak", img: "https://i.pravatar.cc/100?img=1" },
+          { name: "Yossi", img: "https://i.pravatar.cc/100?img=2" },
+          { name: "Avi", img: "https://i.pravatar.cc/100?img=4" }
+        ]
+      },
+      yearly: {
+        title: "🏆 הגמגום של השנה",
+        nominees: [
+          { name: "Barak", img: "https://i.pravatar.cc/100?img=1" },
+          { name: "Yossi", img: "https://i.pravatar.cc/100?img=2" },
+          { name: "Dani", img: "https://i.pravatar.cc/100?img=3" },
+          { name: "Noam", img: "https://i.pravatar.cc/100?img=5" }
+        ]
+      }
+    };
 
     const params = new URLSearchParams(window.location.search);
     const key = params.get("category");
-
     const data = categories[key];
 
     document.getElementById("title").innerText = data.title;
 
     const list = document.getElementById("list");
 
-data.nominees.forEach(person => {
-  const card = document.createElement("div");
-  card.className = "vote-card";
+    data.nominees.forEach(person => {
+      const card = document.createElement("div");
+      card.className = "vote-card";
 
-  card.innerHTML = `
-    <img src="${person.img}" class="avatar">
-    <span>${person.name}</span>
-  `;
+      card.innerHTML = `
+        <img src="${person.img}" class="avatar">
+        <span>${person.name}</span>
+      `;
 
-  card.onclick = () => alert("הצבעת ל: " + person.name);
-  list.appendChild(card);
-});
-
-    
+      card.onclick = () => alert("הצבעת ל: " + person.name);
+      list.appendChild(card);
+    });
   </script>
 
 </body>
 </html>
-
