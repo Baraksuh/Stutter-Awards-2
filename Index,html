@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>Stutter Awards</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">🏆 Stutter Awards</div>
+  <div class="user">Barak</div>
+</header>
+
+<section class="hero">
+  <h1>בחרו קטגוריה להצבעה</h1>
+  <p>הצביעו פעם אחת בכל קטגוריה</p>
+</section>
+
+<section class="cards">
+  <div class="card" onclick="goVote('daily')">
+    <h3>🤐 הגמגום של היום</h3>
+    <span>3 מועמדים</span>
+    <button>להצביע ←</button>
+  </div>
+
+  <div class="card" onclick="goVote('monthly')">
+    <h3>📅 הגמגום של החודש</h3>
+    <span>4 מועמדים</span>
+    <button>להצביע ←</button>
+  </div>
+
+  <div class="card" onclick="goVote('yearly')">
+    <h3>🏆 הגמגום של השנה</h3>
+    <span>6 מועמדים</span>
+    <button>להצביע ←</button>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
