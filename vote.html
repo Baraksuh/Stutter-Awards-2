@@ -45,6 +45,37 @@
   <meta charset="UTF-8">
   <title>Stutter Vote</title>
   <link rel="stylesheet" href="style.css">
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyD3zRs7Z7YrD6VhGseV5Msk3g_23M5-DAI",
+    authDomain: "stutter-awards2.firebaseapp.com",
+    projectId: "stutter-awards2",
+    storageBucket: "stutter-awards2.firebasestorage.app",
+    messagingSenderId: "968119653644",
+    appId: "1:968119653644:web:781c09aeb89e7a59bce529"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+</script>
+
+    <script>
+  auth.onAuthStateChanged(user => {
+    if (user) {
+      console.log("LOGGED IN:", user.displayName);
+    } else {
+      console.log("NOT LOGGED IN");
+    }
+  });
+</script>
+
+
 </head>
   
 <body class="vote-body">
